@@ -1,0 +1,8 @@
+@import "../../../styles.scss";
+
+.color-configuration{
+    @extend .custom-p-1_2;
+    @extend .normal-d-flex;
+    justify-content: center;
+    align-items: center;
+}

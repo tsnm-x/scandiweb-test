@@ -1,0 +1,42 @@
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    width: 100vw;
+}
+
+.nav-option{
+    height: 6.15vh;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #1D1F22;
+    text-transform: uppercase;
+    text-align: center;
+    transition: 0.1s;
+}
+
+.nav-option:hover{
+    color: #5ECE7B;
+    border-bottom: 3px solid #5ECE7B;
+}
+
+.nav-option:focus,.nav-option:active, .active-category{
+    color: #5ECE7B;
+    border-bottom: 3px solid #5ECE7B;
+    transition: none;
+}
+
+.custom-dropdown-option{
+    transition: 0.1s
+}
+
+.custom-dropdown-option:hover, .custom-dropdown-option:focus{
+    background-color: rgba(219, 219, 219, 0.705);
+}
+
+.selected-currency{
+    background-color: rgba(219, 219, 219, 0.705);
+}

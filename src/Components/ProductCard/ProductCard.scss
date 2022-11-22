@@ -1,0 +1,40 @@
+@mixin card-shadow {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2)
+}
+
+.product-card{
+    transition: 0.1s;
+}
+
+.product-card:hover{
+    @include card-shadow()
+}
+
+.popup-cart{
+    background-color: #5ECE7B;
+    animation-name: cart-icon;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    @include card-shadow()
+}
+
+@keyframes cart-icon {
+    from {
+        top: 80%; 
+        left: 85%;
+        height: 0;
+        width: 0;
+        padding: 0;
+    }
+    to {
+        top: 75%; 
+        left: 80%;
+        height: 6.5vh;
+        width: 6.5vh;
+        padding: 0.25rem;
+    }
+}
+
+.out-of-stock-text{
+    color:rgba(0, 0, 0, 0.2)
+}

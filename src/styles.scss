@@ -1,0 +1,260 @@
+$total: 12;
+
+$sizing-vals: (1_1:0.1rem, 1_2: 0.2rem, 1_4: 0.4rem, 1: 0.5rem, 2: 0.75rem, 3: 1rem, 4: 1.5rem, 5: 1.75rem, 6: 2rem, 7: 2.5rem, 8: 3rem);
+
+$percentage-vals: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800;
+
+$border-max-width: 5;
+
+$maxZIndex: 99;
+
+@function grid($section){
+    @return percentage(calc($section / $total));
+}
+
+@for $i from 1 through $total{
+    .custom-col-#{$i}{
+        width: grid($i);
+    }
+}
+
+@for $i from 1 through $border-max-width{
+    .custom-border-black-#{$i}{
+        border: #{$i}px solid black;
+    }
+
+    .custom-border-grey-#{$i}{
+        border: #{$i}px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-border-b-grey-#{$i}{
+        border-bottom: #{$i}px solid rgba(141, 141, 141, 0.2);
+    }
+
+    .custom-border-t-grey-#{$i}{
+        border-top: #{$i}px solid rgba(141, 141, 141, 0.2);
+    }
+
+    .custom-border-green-#{$i}{
+        border: #{$i}px solid #5ECE7B;
+    }
+}
+
+@for $i from 1 through $maxZIndex {
+    .custom-z-index-#{$i}{
+        z-index: $i;
+    }
+}
+
+@function widthHeightPercentage($int){
+    @return percentage(calc($int / 100));
+}
+
+@each $int in $percentage-vals{
+    .custom-w-#{$int}{
+        width: widthHeightPercentage($int);
+    }
+
+    .custom-vw-#{$int}{
+        width: #{$int}vw;
+    }
+    .custom-vh-#{$int}{
+        height: #{$int}vh;
+    }
+
+    .custom-h-#{$int}{
+        height: widthHeightPercentage($int);
+    }
+
+    .custom-top-#{$int}{
+        top: widthHeightPercentage($int);
+    }
+
+    .custom-reverse-top-#{$int}{
+        top: -#{widthHeightPercentage($int)};
+    }
+
+    .custom-left-#{$int}{
+        left: widthHeightPercentage($int);
+    }
+
+    .custom-reverse-left-#{$int}{
+        left: -#{widthHeightPercentage($int)};
+    }
+
+}
+
+
+@each $key, $sizing-val in $sizing-vals{
+    .custom-mt-#{$key}{
+        margin-top: $sizing-val;
+    }
+
+    .custom-mb-#{$key}{
+        margin-bottom: $sizing-val;
+    }
+
+    .custom-ms-#{$key}{
+        margin-left: $sizing-val;
+    }
+
+    .custom-me-#{$key}{
+        margin-right: $sizing-val;
+    }
+
+    .custom-m-#{$key}{
+        margin: $sizing-val;
+    }
+
+    .custom-pt-#{$key}{
+        padding-top: $sizing-val;
+    }
+
+    .custom-pb-#{$key}{
+        padding-bottom: $sizing-val;
+    }
+
+    .custom-ps-#{$key}{
+        padding-left: $sizing-val;
+    }
+
+    .custom-pe-#{$key}{
+        padding-right: $sizing-val;
+    }
+
+    .custom-p-#{$key}{
+        padding: $sizing-val;
+    }
+
+    .custom-text-#{$key}{
+        font-size: $sizing-val;
+    }
+}
+
+.custom-bg-transparent{
+    background-color: transparent;
+}
+
+.custom-bg-white{
+    background-color: white;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.custom-text-style{
+    font-family: 'Raleway', sans-serif;
+}
+
+.custom-overflow-x-hidden{
+    overflow-x: hidden;
+}
+
+.custom-overflow-y-hidden{
+    overflow-y: hidden;
+}
+
+.custom-cursor-pointer {
+    cursor: pointer;
+}
+
+.normal-d-flex{
+    display: flex;
+}
+
+.d-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-justify-center{
+    display: flex;
+    justify-content: center;
+}
+
+.custom-justify-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-justify-evenly{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.custom-justify-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-justify-around{
+    display: flex;
+    justify-content: space-around;
+}
+
+.custom-align-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-flex-wrap{
+    flex-wrap: wrap;
+}
+
+.custom-position-relative{
+    position: relative
+}
+
+.custom-position-absolute{
+    position: absolute
+}
+
+.custom-position-fixed{
+    position: fixed
+}
+
+.custom-position-sticky{
+    position: sticky
+}
+
+.custom-rounded{
+    border-radius: 50%;
+}
+
+.custom-shadow{
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2)
+}
+
+.custom-text-center{
+    text-align: center;
+}
+
+.custom-bold{
+    font-weight: 900;
+}
+
+.custom-normal-weight{
+    font-weight: 600;
+}
+
+.custom-light{
+    font-weight: 300;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.uppercase{
+    text-transform: uppercase
+}
+
+.roboto-condensed-font{
+    font-family: 'Roboto Condensed', sans-serif;;
+}
+
+.roboto-font{
+    font-family: 'Roboto', sans-serif;;
+}

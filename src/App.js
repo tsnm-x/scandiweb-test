@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import { unstable_HistoryRouter as HistoryRouter, Routes, Route } from "react-router-dom";
+import PLP from './Pages/Category';
+import PDP from './Pages/Product';
+import Cart from './Pages/Cart';
+import { history } from './history';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render (){
+    return(
+      <HistoryRouter history={history}>
+         <Routes>
+            <Route exact path='/' element={<PLP/>} />
+            <Route exact path='/product/:id' element={<PDP/>} />
+            <Route exact path='/cart' element={<Cart/>} />
+          </Routes>
+      </HistoryRouter>
+    )
+  }
 }
 
 export default App;

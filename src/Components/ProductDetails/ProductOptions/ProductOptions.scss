@@ -1,0 +1,12 @@
+@import "../../../styles.scss";
+.add-to-cart-btn{
+    color: white;
+    border: 1px solid transparent;
+}
+
+.color-configuration{
+    @extend .custom-p-1_2;
+    @extend .normal-d-flex;
+    justify-content: center;
+    align-items: center;
+}
