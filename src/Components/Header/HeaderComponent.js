@@ -136,7 +136,17 @@ class Header extends Component{
                             <span style={{marginRight: '0.25rem'}}>{this.state.selectedCurrency}</span>
                         </div>
                         <div className="custom-position-relative custom-text-style" ref={this.currencyRef}>
-                            <i className={`fa-solid ${this.state.currencyDropDown? "fa-angle-up":"fa-angle-down"} custom-cursor-pointer custom-me-4 custom-text-2`} onClick={() => this.activateCurrencyDropDown()}></i>
+                            <div className="custom-cursor-pointer custom-me-4 custom-text-2"  onClick={() => this.activateCurrencyDropDown()}>
+                                {
+                                    this.state.currencyDropDown?
+                                    (<svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 3.5L4 0.5L7 3.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>) :
+                                    (<svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 0.5L4 3.5L7 0.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>)
+                                }
+                            </div>
                             {this.state.currencyDropDown && 
                                 (<div className="custom-position-absolute custom-top-80 custom-bg-white custom-reverse-left-65 custom-pt-1 custom-pb-1 custom-shadow" style={{width: '6.5vw'}}>
                                     {this.state.currencies.map((currency, index) => {
