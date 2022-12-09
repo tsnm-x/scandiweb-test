@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { cartActions } from '../../../store/cart';
+import "./CartProduct.scss"
 
 class CartProduct extends Component{
     constructor(props){
@@ -294,23 +295,22 @@ class CartProduct extends Component{
                         <div className='custom-text-6 custom-mb-1'>{this.props?.product?.product?.brand}</div>
                         <div className='custom-text-6 custom-light'>{this.props?.product?.product?.name}</div>
                     </div>
-                    <div className='custom-pt-1 custom-pb-1 custom-text-5 custom-mb-3 custom-text-style' style={{fontWeight: '600'}}>
+                    <div className='custom-pt-1 custom-pb-1 custom-text-5 custom-mb-3 custom-text-style amount'>
                         {this.getCurrency() ? `${this.getCurrency()?.currency?.symbol}${this.getCurrency()?.amount}` : "-"}
                     </div>
-                    <div className='d-flex-column' style={{gridGap: '1.5rem'}}>
+                    <div className='d-flex-column gridGap-attribute'>
                     {this.props?.product?.product?.attributes?.map((attr, idx) => {
                         return(
                             <div key={idx}>
                                 {attr?.name !== 'Color' ? (
-                                    <div className='d-flex-column custom-align-between custom-text-style' style={{gridGap: '0.5rem'}}>
-                                        <div className='custom-normal-weight uppercase roboto-condensed-font' style={{fontSize: '1.20rem'}}>{attr?.name}:</div>
+                                    <div className='d-flex-column custom-align-between custom-text-style gridGap-item'>
+                                        <div className='custom-normal-weight uppercase roboto-condensed-font attr-fontSize'>{attr?.name}:</div>
                                         <div className='normal-d-flex custom-col-12'>
                                             {attr?.items?.map((item, index) => {
                                                 return (
                                                     <div 
                                                         key={index}
-                                                        className='normal-d-flex custom-justify-center custom-w-15 custom-p-2 custom-align-center custom-border-black-1 custom-me-2 custom-text-center' 
-                                                        style={{ backgroundColor: `${this.state[attr?.name] === item?.displayValue ? 'black': 'white'}`, color: `${this.state[attr?.name] === item?.displayValue ? 'white': 'black'}` }}
+                                                        className={`normal-d-flex custom-justify-center custom-w-15 custom-p-2 custom-align-center custom-border-black-1 custom-me-2 custom-text-center ${this.state[attr?.name] === item?.displayValue ? 'selected': 'unselected'}`} 
                                                     >
                                                         {item?.displayValue}
                                                     </div>
@@ -319,8 +319,8 @@ class CartProduct extends Component{
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className='d-flex-column custom-align-between custom-text-style' style={{gridGap: '0.5rem'}}>
-                                        <div className='custom-normal-weight uppercase roboto-condensed-font' style={{fontSize: '1.20rem'}}>Color:</div>
+                                    <div className='d-flex-column custom-align-between custom-text-style gridGap-item'>
+                                        <div className='custom-normal-weight uppercase roboto-condensed-font attr-fontSize'>Color:</div>
                                         <div className='normal-d-flex '>
                                             {attr?.items?.map((item, index) => {
                                                 return (
@@ -328,7 +328,7 @@ class CartProduct extends Component{
                                                         key={index}
                                                         className={` ${this.state[attr?.name] === item?.displayValue ? 'custom-border-green-1': ''} color-configuration custom-me-1`} 
                                                     >
-                                                        <div style={{width: '4vh', height: '4vh', backgroundColor: `${item?.value}`, border: `${item?.displayValue === 'White' ? '1px solid grey' : ''}`}}></div>
+                                                        <div className={`color-attr ${item?.displayValue === 'White' ? 'color-border' : ''}`} style={{ backgroundColor: `${item?.value}`}}></div>
                                                     </div>
                                                 )
                                             })}
@@ -343,13 +343,9 @@ class CartProduct extends Component{
                 </div>
                 
                 <div className='custom-col-3 normal-d-flex custom-justify-between custom-position-relative'>
-                    <div className='custom-col-2 d-flex-column custom-align-center custom-justify-between custom-text-style'>
+                    <div className='custom-col-2 d-flex-column custom-align-center custom-justify-between custom-text-style custom-me-2'>
                         <div 
-                            className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-7'
-                            style={{
-                                height: '40px',
-                                width: '40px'
-                            }}
+                            className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-7 increment-decrement-cart-product'
                             onClick={() => this.increment()}
                         >
                             +
@@ -363,21 +359,20 @@ class CartProduct extends Component{
                             }
                         </div>
                         <div 
-                            className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-7'
-                            style={{
-                                height: '40px',
-                                width: '40px'
-                            }}
+                            className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-7 increment-decrement-cart-product'
                             onClick={() => this.decrement()}
                         >
                             -
                         </div>
                     </div>
-                    {this.state.selectedImg && <img
-                        src={this.state.selectedImg}
-                        className='custom-col-9 custom-h-100'
-                        alt='productImg'
-                    />}
+                    {this.state.selectedImg && 
+                    <div className="product-img d-flex-column custom-align-center custom-justify-center">
+                        <img
+                            src={this.state.selectedImg}
+                            className='custom-w-100'
+                            alt='productImg'
+                        />
+                    </div>}
                     {this.props?.product?.product?.gallery?.length > 1 && <div className='custom-position-absolute custom-top-90 custom-left-80 normal-d-flex'>
                         <div 
                             className='normal-d-flex custom-justify-center custom-align-center custom-cursor-pointer custom-z-index-2' 

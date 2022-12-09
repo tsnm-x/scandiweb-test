@@ -11,6 +11,7 @@
 }
 
 #products-container{
+    height: 53vh;
     overflow-y: auto;
 
 }
@@ -33,4 +34,20 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
+}
+
+.minicart-position{
+    right: -20px
+}
+
+.minicart-width{
+    width: 25vw;
+}
+
+.active-checkout{
+    background-color: #5ECE7B;
+}
+
+.inactive-checkout{
+    background-color: #aee6bd;
 }

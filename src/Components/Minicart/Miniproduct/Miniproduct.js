@@ -263,34 +263,32 @@ class Miniproduct extends Component{
                         return(
                             <div key={idx}>
                                 {attr?.name !== 'Color' ? (
-                                    <div className='d-flex-column custom-align-between custom-mb-1' style={{gridGap: '0.5rem'}}>
+                                    <div className='d-flex-column custom-align-between custom-mb-1 gripGap-attribute'>
                                         <div className='custom-light capitalize'>{attr?.name}:</div>
                                         <div className='normal-d-flex custom-col-12'>
                                             {attr?.items?.map((item, index) => {
                                                 return (
                                                     <div 
                                                         key={index}
-                                                        className='normal-d-flex custom-justify-center custom-p-2 custom-align-center custom-border-black-1 custom-text-center' 
-                                                        style={{ backgroundColor: `${this.state[attr?.name] === item?.displayValue ? 'black': 'white'}`, color: `${this.state[attr?.name] === item?.displayValue ? 'white': 'black'}`, width: `25%`, marginRight: '0.12rem', fontSize: `${item?.displayValue?.length > 4 ? '0.47rem' : '0.8rem'} ` }}
+                                                        className={`normal-d-flex custom-justify-center custom-p-2 custom-align-center custom-border-black-1 custom-text-center ${this.state[attr?.name] === item?.displayValue ? 'selected':'unselected'} attr-item ${item?.value?.length < 5 ? 'attr-item-big-font': 'attr-item-small-font'}`} 
                                                     >
-                                                        {item?.displayValue}
+                                                        {item?.value}
                                                     </div>
                                                 )
                                             })}
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className='d-flex-column custom-align-between' style={{gridGap: '0.5rem'}}>
+                                    <div className='d-flex-column custom-align-between gripGap-attribute'>
                                         <div className='custom-light capitalize'>Color:</div>
                                         <div className='normal-d-flex '>
                                             {attr?.items?.map((item, index) => {
                                                 return (
                                                     <div 
                                                         key={index}
-                                                        className={` ${this.state[attr?.name] === item?.displayValue ? 'custom-border-green-1': ''} color-configuration`} 
-                                                        style={{marginRight: '0.10rem'}}
+                                                        className={` ${this.state[attr?.name] === item?.displayValue ? 'custom-border-green-1': ''} color-configuration color-container-margin`} 
                                                     >
-                                                        <div style={{width: '3vh', height: '3vh', backgroundColor: `${item?.value}`, border: `${item?.displayValue === 'White' ? '1px solid grey' : ''}`}}></div>
+                                                        <div className={`color-config ${item?.displayValue === 'White' ? 'color-border':''}`} style={{ backgroundColor: `${item?.value}`}}></div>
                                                     </div>
                                                 )
                                             })}
@@ -304,11 +302,7 @@ class Miniproduct extends Component{
                 </div>
                 <div className='custom-col-1 d-flex-column custom-align-center custom-justify-between'>
                     <div 
-                        className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-6'
-                        style={{
-                            height: '25px',
-                            width: '25px'
-                        }}
+                        className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-6 increment-decrement-style'
                         onClick={() => this.increment()}
                     >
                         +
@@ -322,23 +316,21 @@ class Miniproduct extends Component{
                         }
                     </div>
                     <div 
-                        className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-6'
-                        style={{
-                            height: '25px',
-                            width: '25px'
-                        }}
+                        className='normal-d-flex custom-justify-center custom-light custom-align-center custom-border-black-1 custom-cursor-pointer custom-text-center custom-text-6 increment-decrement-style'
                         onClick={() => this.decrement()}
                     >
                         -
                     </div>
                 </div>
-                <div className='custom-col-4'>
-                    {this.props?.product?.product?.gallery[0] && <img
-                        src={this.props?.product?.product?.gallery[0]}
-                        className='custom-w-100'
-                        style={{minHeight: "80%"}}
-                        alt='productImg'
-                    />}
+                <div className='custom-col-4 d-flex-column custom-align-center custom-justify-center'>
+                    {this.props?.product?.product?.gallery[0] && 
+                    <div className="product-img-mini d-flex-column custom-align-center custom-justify-center">
+                        <img
+                            src={this.props?.product?.product?.gallery[0]}
+                            className='custom-w-100'
+                            alt='productImg'
+                        />
+                    </div>}
                 </div>
             </div>
         )

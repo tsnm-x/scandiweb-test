@@ -216,20 +216,19 @@ class ProductOptions extends Component{
                     <div className='custom-text-6 custom-mb-1 capitalize'>{this.props?.product?.brand}</div>
                     <div className='custom-text-6 custom-light capitalize'>{this.props?.product?.name}</div>
                 </div>
-                <div className='d-flex-column custom-mb-6' style={{gridGap: '1.5rem'}}>
+                <div className='d-flex-column custom-mb-6 gridGap-attribute'>
                     {this.props?.product?.attributes?.map((attr, idx) => {
                         return(
                             <div key={idx}>
                                 {attr?.name !== 'Color' ? (
-                                    <div className='d-flex-column custom-align-between' style={{gridGap: '0.5rem'}}>
-                                        <div className='custom-normal-weight uppercase roboto-condensed-font' style={{fontSize: '1.20rem'}}>{attr?.name}:</div>
+                                    <div className='d-flex-column custom-align-between gridGap-item'>
+                                        <div className='custom-normal-weight uppercase roboto-condensed-font attr-name-fontSize'>{attr?.name}:</div>
                                         <div className='normal-d-flex custom-col-12'>
                                             {attr?.items?.map((item, index) => {
                                                 return (
                                                     <div 
                                                         key={index}
-                                                        className='normal-d-flex custom-justify-center custom-w-20 custom-p-2 custom-align-center custom-border-black-1 custom-cursor-pointer custom-me-2 custom-text-center' 
-                                                        style={{ backgroundColor: `${this.state[attr?.name] === item?.displayValue ? 'black': 'white'}`, color: `${this.state[attr?.name] === item?.displayValue ? 'white': 'black'}` }}
+                                                        className={`normal-d-flex custom-justify-center custom-w-20 custom-p-2 custom-align-center custom-border-black-1 custom-cursor-pointer custom-me-2 custom-text-center ${this.state[attr?.name] === item?.displayValue ? 'selected' : 'unselected'}`} 
                                                         onClick={() => this.changeState(attr, item)}
                                                     >
                                                         {item?.displayValue}
@@ -239,8 +238,8 @@ class ProductOptions extends Component{
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className='d-flex-column custom-align-between' style={{gridGap: '0.5rem'}}>
-                                        <div className='custom-normal-weight uppercase roboto-condensed-font' style={{fontSize: '1.20rem'}}>Color:</div>
+                                    <div className='d-flex-column custom-align-between gridGap-item'>
+                                        <div className='custom-normal-weight uppercase roboto-condensed-font attr-name-fontSize'>Color:</div>
                                         <div className='normal-d-flex '>
                                             {attr?.items?.map((item, index) => {
                                                 return (
@@ -249,7 +248,7 @@ class ProductOptions extends Component{
                                                         className={` ${this.state[attr?.name] === item?.displayValue ? 'custom-border-green-1': ''} color-configuration custom-me-1 custom-cursor-pointer`} 
                                                         onClick={() => this.setState({[attr?.name]: item?.displayValue})}
                                                     >
-                                                        <div style={{width: '4vh', height: '4vh', backgroundColor: `${item?.value}`, border: `${item?.displayValue === 'White' ? '1px solid grey' : ''}`}}></div>
+                                                        <div className={`${item?.displayValue === 'White' ? 'color-border' : ''} color-config-big `} style={{backgroundColor: `${item?.value}`}}></div>
                                                     </div>
                                                 )
                                             })}
@@ -262,21 +261,20 @@ class ProductOptions extends Component{
                     })}
                 </div>
                 <div className='custom-mb-6'>
-                    <div className='custom-normal-weight custom-mb-3 uppercase roboto-condensed-font' style={{fontSize: '1.20rem'}}>Price:</div>
+                    <div className='custom-normal-weight custom-mb-3 uppercase roboto-condensed-font attr-name-fontSize'>Price:</div>
                     <div className='custom-normal-weight custom-text-4'>{this.getCurrency() ? `${this.getCurrency()?.currency?.symbol}${this.getCurrency()?.amount}` : "-"}</div>
                 </div>
                 <div className='custom-mb-6'>
                     <button 
                         disabled={!this.props?.product?.inStock} 
-                        style={{fontSize: '1.05rem', backgroundColor: `${this.props?.product?.inStock? '#5ECE7B' : '#aee6bd'}`}} 
-                        className={`add-to-cart-btn custom-col-8 custom-p-3 custom-text-center uppercase ${this.props?.product?.inStock ? 'custom-cursor-pointer': ''} roboto-font`}
+                        className={`add-to-cart-btn custom-col-8 custom-p-3 custom-text-center uppercase ${this.props?.product?.inStock ? 'custom-cursor-pointer active-add-to-cart': 'inactive-add-to-cart'} roboto-font`}
                         onClick={() => this.addToCart()}
                     >
                         add to cart
                     </button>
                 </div>
                 <div className='custom-col-8 custom-mb-6 roboto-font'>
-                    <div style={{fontSize: '1.05rem'}}>
+                    <div className='description-font-size'>
                         <div dangerouslySetInnerHTML={{ __html: this.props?.product?.description ? this.props?.product?.description : "" }} />
                     </div>
                 </div>

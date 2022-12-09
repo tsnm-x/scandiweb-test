@@ -2,11 +2,10 @@
     display: flex;
     justify-content: space-between;
     height: 8vh;
-    width: 100vw;
 }
 
 .nav-option{
-    height: 6.15vh;
+    height: 6.17vh;
     font-family: 'Raleway', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -39,4 +38,28 @@
 
 .selected-currency{
     background-color: rgba(219, 219, 219, 0.705);
+}
+
+.overlay-background{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.currency-icon-margin{
+    margin-right: 0.25rem;
+}
+
+.currency-dropdown-width{
+    width: 6.5vw;
+}
+
+.cart-icon-margin{
+    margin-top: 0.14rem;
+}
+
+.cart-counter{
+    background-color: black;
+    color: white;
+    height: 20px;
+    width: 20px;
+    font-size: 0.6rem;
 }

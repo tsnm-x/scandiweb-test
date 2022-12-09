@@ -31,11 +31,11 @@ class Minicart extends Component{
 
     render(){
         return (
-            <div className="custom-position-absolute custom-top-105 custom-bg-white custom-reverse-left-1600 custom-pt-2 custom-pb-2 custom-ps-1 custom-pe-1 custom-z-index-6 custom-text-style custom-normal-weight" style={{width: '25vw'}} >
+            <div className="custom-position-absolute custom-top-100 custom-bg-white minicart-position custom-pt-2 custom-pb-2 custom-ps-1 custom-pe-1 custom-z-index-6 custom-text-style custom-normal-weight minicart-width" >
                 <div className='custom-m-3'>
                     <span className='custom-bold'>My Bag</span>, {`${this.props?.cart?.products?.length} ${this.props?.cart?.products?.length > 1 ? 'items' : 'item'}`}
                 </div>
-                <div style={{height: '53vh'}} id='products-container'>
+                <div id='products-container'>
                     {this?.props?.cart?.products?.map((product, index) => {
                         return (
                             <div key={index} className='custom-mb-4'><Miniproduct product={product}/></div>
@@ -56,9 +56,8 @@ class Minicart extends Component{
                             </button>
                         </Link>
                         <button 
-                            className='checkout-button custom-p-2 custom-ps-5 custom-pe-5 custom-text-center' 
+                            className={`checkout-button custom-p-2 custom-ps-5 custom-pe-5 custom-text-center ${this?.props?.cart?.count ? 'active-checkout' : 'inactive-checkout'}`} 
                             disabled={!this?.props?.cart?.count}
-                            style={{backgroundColor: `${this?.props?.cart?.count ? '#5ECE7B' : '#aee6bd'}`}}
                         >
                             CHECK OUT
                         </button>

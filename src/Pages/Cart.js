@@ -15,7 +15,7 @@ class Cart extends Component{
 
     render() {
         return(
-            <div className="d-flex-column custom-align-center custom-overflow-x-hidden">
+            <div className="d-flex-column custom-align-center">
                 <Header cartDropDown={this.state.cartDropDown} setCartDropDown={(newVal) => this.setState({cartDropDown: newVal})}/>
                 <CartProductList/>
             </div>

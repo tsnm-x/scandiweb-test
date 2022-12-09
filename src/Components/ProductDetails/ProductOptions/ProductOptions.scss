@@ -1,7 +1,16 @@
 @import "../../../styles.scss";
 .add-to-cart-btn{
+    font-size: 1.05rem;
     color: white;
     border: 1px solid transparent;
+}
+
+.active-add-to-cart{
+    background-color: #5ECE7B;
+}
+
+.inactive-add-to-cart{
+    background-color: #aee6bd;
 }
 
 .color-configuration{
@@ -9,4 +18,39 @@
     @extend .normal-d-flex;
     justify-content: center;
     align-items: center;
+}
+
+.gridGap-attribute{
+    gap: 1.5rem;
+}
+
+.gridGap-item{
+    gap: 0.5rem;
+}
+
+.attr-name-fontSize{
+    font-size: 1.20rem;
+}
+
+.selected{
+    background-color: black;
+    color: white;
+}
+
+.unselected{
+    background-color: white;
+    color: black;
+}
+
+.color-config-big{
+    width: 4vh;
+    height: 4vh;
+}
+
+.color-border{
+    border: 1px solid grey;
+}
+
+.description-font-size{
+    font-size: 1.05rem;
 }

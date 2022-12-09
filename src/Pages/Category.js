@@ -9,7 +9,8 @@ class PLP extends Component{
         super();
 
         this.state={
-            cartDropDown: false
+            cartDropDown: false,
+            disableCartIcons: false
         }
     }
 
@@ -17,9 +18,9 @@ class PLP extends Component{
        
 
         return(
-            <div className="d-flex-column custom-align-center custom-overflow-x-hidden">
-                <Header cartDropDown={this.state.cartDropDown} setCartDropDown={(newVal) => this.setState({cartDropDown: newVal})}/>
-                <ProductList setCartDropDown={(newVal) => this.setState({cartDropDown: newVal})}/>
+            <div className="d-flex-column custom-overflow-x-hidden">
+                <Header setDisableCartIcons={(newVal) => this.setState({disableCartIcons: newVal})} cartDropDown={this.state.cartDropDown} setCartDropDown={(newVal) => this.setState({cartDropDown: newVal})}/>
+                <ProductList setDisableCartIcons={(newVal) => this.setState({disableCartIcons: newVal})} disableCartIcons={this.state.disableCartIcons} cartDropDown={this.state.cartDropDown} setCartDropDown={(newVal) => this.setState({cartDropDown: newVal})}/>
             </div>
         )
     }

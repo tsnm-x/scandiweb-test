@@ -35,13 +35,13 @@ class ProductList extends Component {
     render(){
 
         return (
-            <div className="d-flex-column custom-align-center custom-col-10">
-                    <div className="custom-pb-8 custom-pt-8 custom-mb-8 custom-mt-8 custom-col-12 custom-text-style custom-text-7 capitalize">{this.props?.category?.category}</div>
-                    <div className="normal-d-flex custom-justify-between custom-flex-wrap custom-mb-6">
+            <div className="d-flex-column custom-align-center">
+                    <div className="custom-pb-8 custom-mb-8 custom-pt-8 custom-mt-8 custom-col-11 custom-text-style custom-text-7 capitalize">{this.props?.category?.category}</div>
+                    <div className="custom-col-11 grid-col-3 custom-mb-6">
                         {this.state.productList?.map((product, idx) => {
                             return (
                                 <div key={idx}>
-                                    <ProductCard product={product} setCartDropDown={this.props.setCartDropDown}/>
+                                    <ProductCard setDisableCartIcons={this.props.setDisableCartIcons} disableCartIcons={this.props.disableCartIcons} product={product} cartDropDown={this.props.cartDropDown} setCartDropDown={this.props.setCartDropDown}/>
                                 </div>
                             )
                         })}

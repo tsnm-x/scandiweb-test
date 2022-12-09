@@ -18,23 +18,36 @@
     @include card-shadow()
 }
 
+.img-container{
+    width: 362px;
+    height: 330px;
+}
+
+.img-overflow-none{
+    overflow-y: hidden;
+}
+
 @keyframes cart-icon {
     from {
         top: 80%; 
-        left: 85%;
+        left: 82%;
         height: 0;
         width: 0;
         padding: 0;
     }
     to {
         top: 75%; 
-        left: 80%;
-        height: 6.5vh;
-        width: 6.5vh;
+        left: 77%;
+        height: 52px;
+        width: 52px;
         padding: 0.25rem;
     }
 }
 
 .out-of-stock-text{
     color:rgba(0, 0, 0, 0.2)
+}
+
+.out-of-stock-bg{
+    background-color: rgba(255, 255, 255, 0.6);
 }

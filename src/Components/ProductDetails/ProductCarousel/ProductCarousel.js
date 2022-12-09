@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ProductCarousel.scss';
 
 class ProductCarousel extends Component{
 
@@ -26,10 +27,10 @@ class ProductCarousel extends Component{
                 <div className='custom-col-2 d-flex-column'>
                     {this.props?.product?.gallery?.map((photo, idx) => {
                         return (
-                            <div key={idx} className='custom-mb-5 custom-cursor-pointer'>
+                            <div key={idx} className='custom-mb-5 custom-cursor-pointer product-sub-img d-flex-column custom-align-center custom-justify-center'>
                                 <img
                                     src={photo}
-                                    alt="mainImg"
+                                    alt="subImg"
                                     className='custom-w-50'
                                     onClick={() => this.setState({selectedImg: photo})}
                                 />
@@ -40,11 +41,13 @@ class ProductCarousel extends Component{
                 </div>
                 <div className='custom-col-9'>
                     {this.state.selectedImg && 
-                        <img
-                            src={this.state.selectedImg}
-                            alt="mainImg"
-                            className='custom-w-100'
-                        />
+                        <div className='product-main-img d-flex-column custom-align-center custom-justify-center'>
+                            <img
+                                src={this.state.selectedImg}
+                                alt="mainImg"
+                                className='custom-w-100'
+                            />
+                        </div>
                     }
                 </div>
             </div>

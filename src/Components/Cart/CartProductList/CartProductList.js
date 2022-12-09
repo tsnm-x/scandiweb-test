@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { cartActions } from '../../../store/cart';
 import CartOrderBtn from '../CartOrderBtn/CartOrderBtn';
 import CartProduct from '../CartProduct/CartProduct';
+import './CartProductList.scss'
 
 class CartProductList extends Component{
 
@@ -14,8 +15,8 @@ class CartProductList extends Component{
 
     render(){
         return (
-            <div className='d-flex-column custom-col-11' style={{gridGap: '3rem'}}>
-                <div className='uppercase custom-text-6 custom-mt-8' style={{fontWeight: '600'}}>Cart</div>
+            <div className='d-flex-column custom-col-11 list-gridGap'>
+                <div className='uppercase custom-text-6 custom-mt-8 cart-font-weight'>Cart</div>
                 <div>
                     {this?.props?.cart?.products?.map((product, index) => {
                         return(

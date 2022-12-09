@@ -34,6 +34,10 @@ class ProductCard extends Component {
             }
         }
 
+        if(!prevProps.disableCartIcons && this.props.disableCartIcons){
+            this.setState({viewCartIcon: false})
+        }
+
     }
 
     changeState(attr, item){
@@ -221,23 +225,31 @@ class ProductCard extends Component {
 
     }
 
+    enablePopUp(){
+        this.props.setDisableCartIcons(false)
+        this.setState({viewCartIcon: true})
+    }
+
     render(){
         return (
             <div className={`custom-p-2 product-card custom-mb-4 custom-position-relative custom-text-style`}>
                { !this.props.product?.inStock && 
-                    (<div className='custom-z-index-4 custom-position-absolute custom-w-100 custom-h-100 uppercase out-of-stock-text custom-text-5 custom-top-0 custom-left-0 normal-d-flex custom-justify-center custom-align-center' style={{backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>
+                    (<div className='custom-z-index-4 custom-position-absolute custom-w-100 custom-h-100 uppercase out-of-stock-text custom-text-5 custom-top-0 custom-left-0 normal-d-flex custom-justify-center custom-align-center out-of-stock-bg'>
                         out of stock
                     </div>)
                }
-                <div onMouseEnter={() => this.setState({viewCartIcon: true})} onMouseLeave={() => this.setState({viewCartIcon: false})}>
+                <div onMouseEnter={() => this.enablePopUp() } onMouseLeave={() => !this.props.cartDropDown && this.setState({viewCartIcon: false})}>
                     <Link to={`/product/${this.props.product?.id}`}><div className={`${this.props?.product?.inStock? 'custom-z-index-2' : 'custom-z-index-6'} custom-w-100 custom-h-100 custom-position-absolute`}></div></Link>
                     <div className='custom-mb-2 custom-w-100 '>
-                        {this.props.product?.gallery && this.props.product?.gallery[0] && <img
+                        {this.props.product?.gallery && this.props.product?.gallery[0] && 
+                        <div className='img-container img-overflow-none'>
+                            <img
                             src={this.props.product?.gallery[0]}
                             alt='product'
-                            style={{width: '334px', height: '310px'}}
-                        />}
-                        {this.state.viewCartIcon && this.props.product?.inStock && <div className='custom-rounded popup-cart custom-position-absolute custom-justify-center custom-z-index-3' onClick={() => this.addToCart()}>
+                            className='custom-w-100'
+                        />
+                        </div>}
+                        { this.state.viewCartIcon && this.props.product?.inStock && <div className='custom-rounded popup-cart custom-position-absolute custom-justify-center custom-z-index-3' onClick={() => this.addToCart()}>
                             <img
                                 src={cartImg}
                                 alt={'cartImg'}
